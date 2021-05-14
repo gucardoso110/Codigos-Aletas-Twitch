@@ -1,0 +1,138 @@
+"""DONATE"""
+
+"""HTML"""
+
+<div class="text-container">
+    <div class="image-container">
+        <video class="video_DONATE_2" autoplay src="https://cdn.streamelements.com/uploads/769f9800-d38d-4a25-9e65-03fe9dbfb231.webm"
+               type="video/webm">
+    </div>
+    <div>
+        <div class="awsome-text-container">
+            <span class="seguidor" id="username-container"></span>
+            <span class="numero" id="amount-container" onload="counter();"></span>
+			
+        </div>
+    </div>
+</div>
+
+
+
+
+
+"""CSS"""
+
+.video_DONATE_2 {
+  position: relative;
+}
+
+@font-face {
+    font-family: 'gilroyextrabold';
+    src: url(URL_DA_FONTE) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.seguidor {
+  position: fixed;
+  bottom: 390px;
+  right: 13px;
+  width: 1920px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 80px;
+  font-family: 'gilroyextrabold';
+  text-transform: uppercase;
+  filter: drop-shadow(1px 3px 00px #CFCFCF) drop-shadow(1px 5px 00px #848484);
+  animation: scaleOut 17s infinite;
+}
+
+.numero {
+  position: fixed;
+  bottom: 290px;
+  right: 13px;
+  width: 1920px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 80px;
+  font-family: 'gilroyextrabold';
+  text-transform: uppercase;
+  filter: drop-shadow(1px 3px 00px #CFCFCF) drop-shadow(1px 5px 00px #848484);
+  animation: scaleOut 17s infinite;
+}
+
+@keyframes scaleOut {
+  0% { 
+    transform: scale(0);
+  }
+  5% {
+    transform: scale(0)
+  }
+  10% {
+    transform: scale(1.1)
+  }
+  15% {
+    transform: scale(1)
+  }
+  96% {
+    transform: scale(1)
+  }
+  98% {
+    transform: scale(1.1)
+  }
+  100% { 
+    transform: scale(0);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  """JS"""
+  
+  
+//get data from the 🤟 StreamElements 🤟 data injection
+const name = '{{name}}';
+const amount = '{{amount}}';
+const animation = 'wobble';
+
+// vanilla es6 query selection (can use libraries and frameworks too)
+const userNameContainer = document.querySelector('#username-container');
+const amountContainer = document.querySelector('#amount-container');
+
+// change the inner html to animate it 🤪
+userNameContainer.innerHTML = stringToAnimatedHTML(name, animation);
+amountContainer.innerHTML = stringToAnimatedHTML(amount, animation);
+
+/**
+ * return an html, with animation
+ * @param s: the text
+ * @param anim: the animation to use on the text
+ * @returns {string}
+ */
+function counter() {
+  var i = 0;
+  var element = document.getElementById("amount-container");
+  var funcNameHere = function() {
+    element.innerHTML = `x${i}`
+    if (i == amount) clearInterval(this);
+    else console.log('Currently at ' + (i++));
+  };
+  // This block will be executed 100 times.
+  setInterval(funcNameHere, 70);
+  funcNameHere();
+} // End
+counter();
+count();
+function stringToAnimatedHTML(s, anim) {
+    let stringAsArray = s.split('');
+    stringAsArray = stringAsArray.map((letter) => {
+        return `<span class="animated-letter ${anim}">${letter}</span>`
+        
+    });
+    return stringAsArray.join('');
+
+}
