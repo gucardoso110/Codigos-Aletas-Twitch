@@ -1,0 +1,106 @@
+# Codigos-Aletas-Twitch
+"""FOLLOW"""
+
+"""HTML"""
+
+<div class="text-container">
+    <div class="image-container">
+        <video class="video_follow" autoplay src="https://cdn.streamelements.com/uploads/b49ec184-b19b-4cde-8751-8d10aca98453.webm"
+               type="video/webm">
+    </div>
+    <div>
+        <div class="awsome-text-container">
+            <span class="seguidor" id="username-container"></span>
+            is now following!
+            <br>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+"""CSS"""
+
+.video_follow {
+  position: relative;
+}
+
+@font-face {
+    font-family: 'gilroyextrabold';
+    src: url(URL_DO_VÍDEO) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.seguidor {
+  position: fixed;
+  bottom: 390px;
+  right: 13px;
+  width: 1920px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 80px;
+  font-family: 'gilroyextrabold';
+  text-transform: uppercase;
+  filter: drop-shadow(1px 3px 00px #CFCFCF) drop-shadow(1px 5px 00px #848484);
+  animation: scaleOut 10s infinite;
+}
+
+@keyframes scaleOut {
+  0% { 
+    transform: scale(0);
+  }
+  5% {
+    transform: scale(0)
+  }
+  15% {
+    transform: scale(1.1)
+  }
+  20% {
+    transform: scale(1)
+  }
+  85% {
+    transform: scale(1)
+  }
+  95% {
+    transform: scale(1.1)
+  }
+  100% { 
+    transform: scale(0);
+  }
+
+
+
+
+
+
+"""JS"""
+
+//get data from the 🤟 StreamElements 🤟 data injection
+const name = '{{name}}';
+const animation = 'wobble';
+
+// vanilla es6 query selection (can use libraries and frameworks too)
+const userNameContainer = document.querySelector('#username-container');
+
+// change the inner html to animate it 🤪
+userNameContainer.innerHTML = stringToAnimatedHTML(name, animation);
+
+/**
+ * return an html, with animation
+ * @param s: the text
+ * @param anim: the animation to use on the text
+ * @returns {string}
+ */
+function stringToAnimatedHTML(s, anim) {
+    let stringAsArray = s.split('');
+    stringAsArray = stringAsArray.map((letter) => {
+        return `<span class="animated-letter ${anim}">${letter}</span>`
+    });
+    return stringAsArray.join('');
+
+}
