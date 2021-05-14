@@ -29,7 +29,7 @@
 
 @font-face {
     font-family: 'gilroyextrabold';
-    src: url(URL_DO_VÍDEO) format('woff');
+    src: url(URL_DA_FONT) format('woff');
     font-weight: normal;
     font-style: normal;
 }
