@@ -122,11 +122,29 @@ function counter() {
     else console.log('Currently at ' + (i++));
   };
   // This block will be executed 100 times.
-  setInterval(funcNameHere, 70);
+  if (amount >= 4500) {
+    setInterval(funcNameHere, 0)
+  } 
+  if (amount >= 2000) {
+    setInterval(funcNameHere, 0.1)
+  }
+  if (amount >= 1000) {
+    setInterval(funcNameHere, 1)
+  }
+  if (amount >= 500) {
+    setInterval(funcNameHere, 5)
+  } 
+  if (amount >= 300) {
+    setInterval(funcNameHere, 15)
+  } 
+  if (amount >= 100) {
+    setInterval(funcNameHere, 30)
+  } else {
+    setInterval(funcNameHere, 50)
+  }
   funcNameHere();
 } // End
 counter();
-count();
 function stringToAnimatedHTML(s, anim) {
     let stringAsArray = s.split('');
     stringAsArray = stringAsArray.map((letter) => {
