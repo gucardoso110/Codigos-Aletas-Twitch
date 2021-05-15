@@ -1,0 +1,60 @@
+//get data from the 🤟 StreamElements 🤟 data injection
+const name = '{{name}}';
+const amount = '{{amount}}';
+const animation = 'wobble';
+
+// vanilla es6 query selection (can use libraries and frameworks too)
+const userNameContainer = document.querySelector('#username-container');
+const amountContainer = document.querySelector('#amount-container');
+
+// change the inner html to animate it 🤪
+userNameContainer.innerHTML = stringToAnimatedHTML(name, animation);
+amountContainer.innerHTML = stringToAnimatedHTML(amount, animation);
+
+/**
+ * return an html, with animation
+ * @param s: the text
+ * @param anim: the animation to use on the text
+ * @returns {string}
+ */
+function counter() {
+  var i = 0;
+  var element = document.getElementById("amount-container");
+  var funcNameHere = function() {
+    element.innerHTML = `x${i}`
+    if (i == amount) clearInterval(this);
+    else console.log('Currently at ' + (i++));
+  };
+  // This block will be executed 100 times.
+  if (amount >= 4500) {
+    setInterval(funcNameHere, 0)
+  } 
+  if (amount >= 2000) {
+    setInterval(funcNameHere, 0.1)
+  }
+  if (amount >= 1000) {
+    setInterval(funcNameHere, 1)
+  }
+  if (amount >= 500) {
+    setInterval(funcNameHere, 5)
+  } 
+  if (amount >= 300) {
+    setInterval(funcNameHere, 15)
+  } 
+  if (amount >= 100) {
+    setInterval(funcNameHere, 30)
+  } else {
+    setInterval(funcNameHere, 50)
+  }
+  funcNameHere();
+} // End
+counter();
+function stringToAnimatedHTML(s, anim) {
+    let stringAsArray = s.split('');
+    stringAsArray = stringAsArray.map((letter) => {
+        return `<span class="animated-letter ${anim}">${letter}</span>`
+        
+    });
+    return stringAsArray.join('');
+
+}
