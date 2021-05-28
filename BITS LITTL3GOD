@@ -1,0 +1,205 @@
+HTML
+
+
+      <div class="text-container">
+    <div class="image-container">
+        <video class="video_bits" autoplay src="https://cdn.streamelements.com/uploads/426c844b-760b-4c80-94cc-ce10ec1f8434.webm"
+               type="video/webm">
+    </div>
+    <div>
+        <div class="awsome-text-container">
+            <span class="seguidor" id="username-container"></span>
+            <span class="numero" id="amount-container" onload="counter();"></span>
+			
+        </div>
+    </div>
+</div>
+
+
+
+
+
+CSS
+
+
+
+
+
+.video_bits {
+  position: relative;
+}
+
+@font-face {
+    font-family: 'Agency FB';
+    font-weight: normal;
+    font-style: bold;
+}
+
+.seguidor {
+  position: fixed;
+  bottom: 395px;
+  right: -10px;
+  width: 1920px;
+  text-align: center;
+  color: #000000;
+  font-size: 140px;
+  font-family: 'Agency FB';
+  filter: drop-shadow(0px 2px 00px #000000) drop-shadow(1px 2px 00px #000000) drop-shadow(3px 5px 2px #1C1C1C);
+  animation: scaleOut 10s infinite;
+}
+
+.numero {
+  position: fixed;
+  bottom: 580px;
+  right: 50px;
+  width: 1920px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 68px;
+  font-family: 'Agency FB';
+  filter: drop-shadow(0px 2px 00px #FFFFFF) drop-shadow(1px 2px 00px #FFFFFF);
+  animation: scaleOut2 10s infinite,
+    		 subindo 10s ease-in-out;
+}
+
+@keyframes scaleOut {
+  0% { 
+    transform: scale(1, 0);
+  }
+  14% {
+    transform: scale(1, 0)
+  }
+  17% {
+    transform: scale(1, 0.7)
+  }
+  87% {
+    transform: scale(1, 0.7)
+  }
+  88% {
+    transform: scale(1, 0)
+  }
+  100% { 
+    transform: scale(1, 0);
+  }
+}
+
+@keyframes scaleOut2 {
+  0% { 
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  15% {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  18% {
+    transform: scale(1, 0.7);
+    opacity: 100;
+  }
+  86% {
+    transform: scale(1, 0.7);
+    opacity: 100;
+  }
+  88% {
+    transform: scale(1, 0.7);
+    opacity: 0;
+  }
+  100% { 
+    transform: scale(1, 0.7);
+    opacity: 0;
+  }
+}
+
+@keyframes subindo {
+  0% { 
+    bottom: 550px; right: 42px;
+  }
+  15% {
+    bottom: 550px; right: 42px;
+  }
+  18% {
+    bottom: 581px; right: 42px;
+  }
+  86% {
+    bottom: 581px; right: 42px;
+  }
+  88% {
+    bottom: 550px; right: 42px;
+  }
+  100% { 
+    bottom: 550px; right: 42px;
+  }
+}
+
+
+
+
+
+
+
+JS 
+
+
+
+
+
+//get data from the 🤟 StreamElements 🤟 data injection
+const name = '{{name}}';
+const amount = '{{amount}}';
+const animation = 'wobble';
+
+// vanilla es6 query selection (can use libraries and frameworks too)
+const userNameContainer = document.querySelector('#username-container');
+const amountContainer = document.querySelector('#amount-container');
+
+// change the inner html to animate it 🤪
+userNameContainer.innerHTML = stringToAnimatedHTML(name, animation);
+amountContainer.innerHTML = stringToAnimatedHTML(amount, animation);
+
+/**
+ * return an html, with animation
+ * @param s: the text
+ * @param anim: the animation to use on the text
+ * @returns {string}
+ */
+function counter() {
+  var i = 0;
+  var element = document.getElementById("amount-container");
+  var funcNameHere = function() {
+    element.innerHTML = `${i}`
+    if (i == amount) clearInterval(this);
+    else console.log('Currently at ' + (i++));
+  };
+  // This block will be executed 100 times.
+  if (amount >= 4500) {
+    setInterval(funcNameHere, 0)
+  } 
+  if (amount >= 2000) {
+    setInterval(funcNameHere, 0.1)
+  }
+  if (amount >= 1000) {
+    setInterval(funcNameHere, 1)
+  }
+  if (amount >= 500) {
+    setInterval(funcNameHere, 5)
+  } 
+  if (amount >= 300) {
+    setInterval(funcNameHere, 15)
+  } 
+  if (amount >= 100) {
+    setInterval(funcNameHere, 30)
+  } else {
+    setInterval(funcNameHere, 50)
+  }
+  funcNameHere();
+} // End
+counter();
+function stringToAnimatedHTML(s, anim) {
+    let stringAsArray = s.split('');
+    stringAsArray = stringAsArray.map((letter) => {
+        return `<span class="animated-letter ${anim}">${letter}</span>`
+        
+    });
+    return stringAsArray.join('');
+
+}
